@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+<EditForm Model="employeeclockTime" >
+
+<div class="col-md-6">
+    <label>Clock In: </label>
+    <InputDate Type="InputDateType.DateTimeLocal" class="form-control" id="ClockIn" @bind-Value="employeeclockTime.ClockIn" @bind-Value:format="mm/dd/yyyy hh:mm tt" placeholder="Clock In" />
+
+</div>
+<div class="col-md-6 mt-5 mt-md-0">
+    <label>Clock Out: </label>
+    <InputDate Type="InputDateType.DateTimeLocal" class="form-control" id="ClockOut" @bind-Value="employeeclockTime.ClockOut" placeholder="Clock Out" />
+</div>
+</EditForm>
+
+@employeeclockTime.ClockIn.ToString()
+
+<hr />
+<img src="icon-192.png" />
+@code {
+    EmployeeclockTime employeeclockTime = new();
+    public class EmployeeclockTime
+    {
+        public DateTime ClockIn { get; set; } = DateTime.Now;
+        public DateTime ClockOut { get; set; } = DateTime.Now;
+    }
+}

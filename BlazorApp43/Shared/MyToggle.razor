@@ -1,0 +1,14 @@
+﻿<button>Toggle</button>
+@code {
+    [Parameter]
+    public EventCallback<bool> ToggleStateChanged { get; set; }
+
+    [Parameter]
+    public bool ToggleState { get; set; } = false;
+
+    private async Task OnButtonClicked()
+    {
+        this.ToggleState = !this.ToggleState;
+        await this.ToggleStateChanged.InvokeAsync(this.ToggleState);
+    }
+}
